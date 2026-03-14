@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .header-nav { display: flex; align-items: center; gap: 12px; font-size: 13px; color: #333; }
+    .header-nav__item { display: flex; align-items: center; text-decoration: none; color: inherit; }
+    .header-nav__divider { color: #ccc; }
+    .header-nav__badge { background: #4caf50; color: #fff; padding: 2px 4px; border-radius: 2px; font-size: 10px; margin-left: 4px; }
+  </style>
+</head>
+<body>
+  <div id="viewer"></div>
+  <script>
+    const HeaderNav = (navData) => {
+      // 컴포넌트 데이터 렌더링 로직
+      const itemsHtml = navData.map((item, index) => {
+        const divider = index < navData.length - 1 ? `<span class="header-nav__divider">|</span>` : '';
+        const badge = item.isNew ? `<span class="header-nav__badge">NEW</span>` : '';
+        
+        return `
+          <a href="${item.href}" class="header-nav__item">
+            ${item.label}${badge}
+          </a>
+          ${divider}
+        `;
+      }).join('');
+
+      return {
+        html: `<nav class="header-nav">${itemsHtml}</nav>`,
+        init: () => {
+          // 정적 링크이므로 별도의 이벤트 로직은 필요 없으나, 
+          // 추후 트래킹(Analytics) 로그 등을 추가하기 최적의 장소입니다.
+          console.log('HeaderNav initialized');
+        }
+      };
+    }
+
+    const headerNav = HeaderNav([
+      { isNew: true, href: "https://www.google.com", label: "Google" },
+      { isNew: false, href: "https://www.qoo10.jp", label: "Qoo10JP" }
+    ]);
+
+    document.getElementById("viewer").innerHTML = headerNav.html;
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    /* 기본 환경 설정 */
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["esnext"],
+    "types": ["node"],
+    "strict": true,
+    "skipLibCheck": true,
+
+    /* 실행 환경 (tsx 최적화) */
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true,
+
+    /* 엄격한 코드 품질 (Ollama 응답 처리용) */
+    "noUncheckedIndexedAccess": true, // 배열 인덱스 접근 시 undefined 체크 강제
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    /* 기타 설정 */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    
+    /* 구조 (필요시 주석 해제) */
+    "rootDir": "./src"
+    // "outDir": "./dist" 
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
