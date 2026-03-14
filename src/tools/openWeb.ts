@@ -28,9 +28,9 @@ async function openWeb({ siteName }: OpenWebParams) {
   try {
     const url = siteNameToURL[siteName];
     await open(url);
-    return null;
+    return { success: true };
   } catch (error) {
-    return error;
+    return { success: false, error };
   }
 }
 
